@@ -1,5 +1,5 @@
 import {configManager} from "@core/config-manager";
-import type {APIRequestContext, APIResponse} from "playwright-core";
+import type {APIRequestContext, APIResponse} from "@playwright/test";
 import {Airport, AirportDistance} from "@api/core/api.model";
 
 export class ApiController {
@@ -24,12 +24,12 @@ export class ApiController {
         return (json as { data: T }).data;
     }
 
-    async getAirports(req: APIRequestContext) {
+    async getAirports(req: APIRequestContext): Promise<Airport[]> {
         const resp = await req.get(`${this.baseUrl}/airports`);
         return this.unwrapData<Airport[]>(resp);
     }
 
-    async getDistanceBetweenAirports(req: APIRequestContext, from: string, to: string) {
+    async getDistanceBetweenAirports(req: APIRequestContext, from: string, to: string): Promise<AirportDistance> {
         const resp = await req.post(`${this.baseUrl}/airports/distance`, {data: {from, to}});
         return this.unwrapData<AirportDistance>(resp);
     }
