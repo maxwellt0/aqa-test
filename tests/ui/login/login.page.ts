@@ -1,6 +1,7 @@
 import {BasePage} from "@ui/core/base.page";
 
 export class LoginPage extends BasePage {
+    get url() { return ""};
 
     get usernameInput() {
         return this.page.locator('input[data-test="username"]')

@@ -2,9 +2,7 @@ import {Page} from "@playwright/test";
 import {configManager} from "@core/config-manager";
 
 export abstract class BasePage {
-    get url() {
-        return ""
-    };
+    abstract get url(): string
 
     constructor(protected page: Page) {
     }

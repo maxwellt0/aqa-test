@@ -3,7 +3,7 @@ import {Airport, AirportDistance} from "./api.model";
 
 export class ApiAsserter {
     verifyAirportsInclude(airports: Airport[], expectedItems: string[]) {
-        const airportNames = airports.map((airport: any) => airport.attributes.name);
+        const airportNames = airports.map((airport: Airport) => airport.attributes.name);
         expectedItems.forEach(item => expect(airportNames).toContain(item));
     }
 

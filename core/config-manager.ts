@@ -1,6 +1,17 @@
 import 'dotenv/config';
 
-class ConfigManager {
+export class ConfigManager {
+  private static instance: ConfigManager;
+
+  private constructor() {}
+
+  static getInstance(): ConfigManager {
+    if (!ConfigManager.instance) {
+      ConfigManager.instance = new ConfigManager();
+    }
+    return ConfigManager.instance;
+  }
+
   get apiBaseUrl(): string {
     return this.getRequiredEnvVar('API_BASE_URL');
   }
@@ -26,4 +37,4 @@ class ConfigManager {
   }
 }
 
-export const configManager = new ConfigManager();
+export const configManager = ConfigManager.getInstance();

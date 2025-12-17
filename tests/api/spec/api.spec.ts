@@ -3,9 +3,7 @@ import {ApiController} from "@api/core/api.controller";
 import {ApiAsserter} from "@api/core/api.asserter";
 
 test.describe('Airport Gap API Tests', () => {
-    // encapsulation api requests logic in a separate class
     const controller = new ApiController();
-    // encapsulating assertion logic in a separate class unless it's really simple
     const asserter = new ApiAsserter();
 
     test('Scenario 1: Verify Airport Count', async ({request}) => {
